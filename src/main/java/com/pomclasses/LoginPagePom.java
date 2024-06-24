@@ -34,13 +34,13 @@ public class LoginPagePom extends BaseClass {
 	private WebElement forgotpassword;
 
 	@FindBy(xpath = "//input[@name='username']")
-	private WebElement resetPasswordusernameInput;
+	private WebElement resetUsernameInput;
 
 	@FindBy(xpath = "//p[text()='Invalid credentials']")
 	private WebElement errorMessage;
 
 	@FindBy(xpath = "//button[@type='submit']")
-	private WebElement resetPasswordsubmitButton;
+	private WebElement resetPasswordButton;
 
 	@FindBy(xpath = "//h6[text()='Reset Password link sent successfully']")
 	private WebElement resetPasswordText;
@@ -59,6 +59,38 @@ public class LoginPagePom extends BaseClass {
 		UtilityClass.setText(passwordInput, password);
 		UtilityClass.webElementClick(submitButton);
 	}
+	public String getUnvalidUsername() {
+		String unvalidUsername = UtilityClass.getWebElementText(usernameText);
+		return unvalidUsername.substring(0,8);
+	}
+	public String getUnvalidPassword() {
+		String unvalidPassword = UtilityClass.getWebElementText(passwordText);
+		return unvalidPassword.substring(0,8);
+	}
+	public void unvalidLogin(String unvalidUsername, String unvalidPassword) {
+		UtilityClass.setText(usernameInput, unvalidUsername);
+		UtilityClass.setText(passwordInput, unvalidPassword);
+		UtilityClass.webElementClick(submitButton);
+	
+	}
+	public String getErrorMessage() {
+	String message = UtilityClass.getWebElementText(errorMessage);
+		return message;
+	}
+	
+	public void forgotPasswordFun(String username) {
+		
+		UtilityClass.webElementClick(forgotpassword);
+		UtilityClass.setText(resetUsernameInput,username);
+		UtilityClass.webElementClick(resetPasswordButton);
+		
+	}
+	public String getResetMessage() {
+		String resetMessage =UtilityClass.getWebElementText(resetPasswordText);
+		return resetMessage;
+	}
+		
+	
 	
 	
 	
