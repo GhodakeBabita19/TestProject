@@ -17,7 +17,8 @@ public class ExcelReader extends BaseClass {
 	// perticular Sheet
 	// Perticular Cell Data
 	// Perticular Row Data
-	// All Sheet data
+	// All Sheet data improvement
+	//All done
 
 	public static FileInputStream readExcelSheet(String sheetName) throws FileNotFoundException {
 
@@ -80,7 +81,6 @@ public class ExcelReader extends BaseClass {
 				else
 					allData.put(sh.getRow(0).getCell(cellNum).getStringCellValue(),
 							sh.getRow(row).getCell(cellNum).getNumericCellValue());
-
 			}
 
 		}
